@@ -1,4 +1,14 @@
 import type { Category } from "#lib/types.ts";
+import { loadCategories } from "#lib/storage.ts";
+
+let initialized = false;
+
+export function initCategories() {
+    if (initialized) return;
+    // Flag: nur ein mal laden
+    initialized = true;
+    categories.push(...loadCategories());
+}
 
 export const categories = $state<Category[]>([]);
 
