@@ -3,14 +3,14 @@ import { loadCategories } from "#lib/storage.ts";
 
 let initialized = false;
 
+export const categories = $state<Category[]>([]);
+
 export function initCategories() {
     if (initialized) return;
     // Flag: nur ein mal laden
     initialized = true;
     categories.push(...loadCategories());
 }
-
-export const categories = $state<Category[]>([]);
 
 export function addCategory(name: string, color: string) {
     const now = Date.now();
