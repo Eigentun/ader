@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CategoryPalette from '#lib/components/CategoryPalette.svelte';
 	import DocumentPanel from '#lib/components/DocumentPanel.svelte';
+	import DocumentColumns from '#lib/components/DocumentColumns.svelte';
 	import { categories, initCategories } from '#lib/state/categories.svelte.ts';
 	import { documents, initDocuments } from '#lib/state/documents.svelte.ts';
 	import { saveCategories } from '#lib/storage.ts';
@@ -21,3 +22,4 @@
 <h1>Logikketten</h1>
 <CategoryPalette />
 <DocumentPanel />
+<DocumentColumns />

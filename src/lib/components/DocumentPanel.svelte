@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { documents, addDocument, removeDocument } from '#lib/state/documents.svelte.ts';
+	import { isOpen, toggleDocument } from '#lib/state/layout.svelte.ts';
 
 	const active = $derived(
 		documents.filter((d) => {
@@ -51,6 +52,7 @@
 <ul>
 	{#each active as doc (doc.id)}
 		<li>
+			<input type="checkbox" checked={isOpen(doc.id)} onchange={() => toggleDocument(doc.id)} />
 			<h3>{doc.title}</h3>
 			<button onclick={() => removeDocument(doc.id)}>Löschen</button>
 		</li>
@@ -58,3 +60,13 @@
 </ul>
 
 <p>{active.length} Dokumente</p>
+
+<style>
+	li {
+		border: 1px solid black;
+		align-items: center;
+		display: flex;
+		gap: 20px;
+		flex-grow: unset;
+	}
+</style>
